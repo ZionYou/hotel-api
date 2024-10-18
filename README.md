@@ -8,7 +8,7 @@
 ## Outline - 目錄
 - Features - 專案功能
 - Enviroment - 環境建置與需求
-- Installing - 專案安裝流程
+- API - 說明API的功能
 - Contributor - 開發人員與工作分配
 
 ## Features - 專案功能
@@ -44,19 +44,112 @@
 - JWT 驗證
 - Google OAuth 2.0 身份驗證
 
-## Installing - 專案安裝流程
-1. 將專案從 GitHub fork 到本地：
-   ```bash
-   git clone https://github.com/oewsj/hotel_full
+## API - 說明API的功能
+### API路徑 https://sunsetvalley.us.to/ + api
+### 測試帳號 
+- Account： test1@mail.com
+- Password： 111111111
 
-2. 安裝所需的套件：
-  ```bash
-   dotnet restore
+### Advertisement
 
-3. 啟動專案：
-  ```bash
-    dotnet run
+- `GET /api/Advertisement/AdvertisementInfo` - 獲取廣告資訊
+- `GET /api/Advertisement/AdvertisementForBanner` - 獲取橫幅廣告
+- `POST /api/Advertisement` - 新增廣告
+- `PUT /api/Advertisement` - 更新廣告
+- `DELETE /api/Advertisement` - 刪除廣告
+
+### Ecpay
+
+- `POST /api/Ecpay/goToEcpay` - 前往綠界支付
+- `POST /api/Ecpay/fetchEcpay` - 獲取綠界支付結果
+
+### HotelInfo
+
+- `GET /api/HotelInfo` - 獲取飯店資訊
+- `PUT /api/HotelInfo` - 更新飯店資訊
+
+### Member
+
+- `GET /api/Member/secure` - 獲取安全資訊
+- `GET /api/Member` - 獲取所有會員
+- `GET /api/Member/{id}` - 獲取特定會員
+- `PUT /api/Member/{id}` - 更新會員資訊
+- `DELETE /api/Member/{id}` - 刪除會員
+- `POST /api/Member/register` - 會員註冊
+- `POST /api/Member/login` - 會員登入
+- `POST /api/Member/google-login` - Google登入
+- `POST /api/Member/refresh-token` - 更新令牌
+
+### News
+
+- `GET /api/News/AllNewsForEnd` - 獲取所有新聞(後台)
+- `GET /api/News` - 獲取所有新聞(前台)
+- `POST /api/News` - 新增新聞
+- `GET /api/News/{id}` - 獲取特定新聞
+- `PUT /api/News/{id}` - 更新新聞
+- `DELETE /api/News/{id}` - 刪除新聞
+
+### Product
+
+- `GET /api/Product` - 獲取所有產品
+- `POST /api/Product` - 新增產品
+- `DELETE /api/Product` - 刪除產品
+- `GET /api/Product/Product/{typeId}` - 獲取特定類型的產品
+- `GET /api/Product/Product/single/{id}` - 獲取單一產品
+- `PUT /api/Product/{id}` - 更新產品
+
+### ProductOrder
+
+- `GET /api/ProductOrder` - 獲取所有訂單
+- `POST /api/ProductOrder` - 新增訂單
+- `PUT /api/ProductOrder` - 更新訂單
+- `DELETE /api/ProductOrder` - 刪除訂單
+- `GET /api/ProductOrder/search/{id}` - 搜尋訂單
+- `GET /api/ProductOrder/order/{id}` - 獲取特定訂單
+- `PUT /api/ProductOrder/OrderDetail` - 更新訂單細節
+
+### ProductType
+
+- `GET /api/ProductType` - 獲取所有產品類型
+- `POST /api/ProductType` - 新增產品類型
+- `PUT /api/ProductType` - 更新產品類型
+- `DELETE /api/ProductType` - 刪除產品類型
+- `GET /api/ProductType/{id}` - 獲取特定產品類型
+
+### RoomType
+
+- `GET /api/RoomType` - 獲取所有房型
+- `GET /api/RoomType/{id}` - 獲取特定房型
+- `POST /api/RoomType/InsertRoomType` - 新增房型
+- `PUT /api/RoomType/UpdateRoomType/{id}/{type}` - 更新房型
+- `DELETE /api/RoomType/DeleteRoomType/{id}` - 刪除房型
+
+### 認證
+
+大多數端點需要認證。請在請求頭中包含有效的JWT令牌:
+
+```
+Authorization: Bearer <your_token_here>
+```
+
+### 錯誤處理
+
+API使用標準的HTTP狀態碼來表示請求的結果。在發生錯誤時,響應體將包含更多詳細信息。
+
+### 範例請求
+
+以下是使用curl進行API請求的示例:
+
+```bash
+# 獲取所有產品
+curl -X GET "https://sunsetvalley.us.to/api/Product" -H "Authorization: Bearer YOUR_TOKEN"
+
+# 新增會員
+curl -X POST "https://sunsetvalley.us.to/api/Member/register" \
+     -H "Content-Type: application/json" \
+     -d '{"name":"John Doe","email":"john@example.com","password":"securepass"}'
 
 ## Contributor - 開發人員與工作分配
 * ZionYou - 資料庫設計、開發API
 * junior155235 - PM、開發API
+
