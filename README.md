@@ -148,6 +148,7 @@ curl -X GET "https://sunsetvalley.us.to/api/Product" -H "Authorization: Bearer Y
 curl -X POST "https://sunsetvalley.us.to/api/Member/register" \
      -H "Content-Type: application/json" \
      -d '{"name":"John Doe","email":"john@example.com","password":"securepass"}'
+```
 
 ## Contributor - 開發人員與工作分配
 * ZionYou - 資料庫設計、開發API
