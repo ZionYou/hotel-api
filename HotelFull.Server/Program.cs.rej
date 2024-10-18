@@ -1,0 +1,26 @@
+diff a/HotelFull.Server/Program.cs b/HotelFull.Server/Program.cs	(rejected hunks)
+@@ -19,16 +19,22 @@
+             var builder = WebApplication.CreateBuilder(args);
+             var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+ 
++<<<<<<< HEAD
+             //sql_server �D�� mysql�����Ȱ��b MySQL NuGet �׼�: $ dotnet add package Pomelo.EntityFrameworkCore.MySql
+             string connectionString = builder.Configuration.GetConnectionString("MySql");
+             // ��� DbContext �Kʹ�� MySql ���锵����
++=======
++            //sql_server �ন mysql�A�ݥ��w�� MySQL NuGet �M��: $ dotnet add package Pomelo.EntityFrameworkCore.MySql
++            string connectionString = builder.Configuration.GetConnectionString("MySql");
++            // �K�[ DbContext �èϥ� MySql �@���ƾڮw
++>>>>>>> origin/connect_to_gcp_mysql
+             builder.Services.AddDbContext<HotelContext>(options =>
+             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+ 
+-            // �]�� HttpClient ���S
++            // ���U HttpClient �u�t
+             builder.Services.AddHttpClient();
+ 
+-            // �]�� HotelService
++            // ���U HotelService
+             builder.Services.AddScoped<HotelService>();
+ 
+             builder.Services.AddCors(options =>

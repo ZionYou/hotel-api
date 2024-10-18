@@ -1,0 +1,7 @@
+HotelFull.Server/bin
+HotelFull.Server/obj
+hotelfull.client/obj
+hotelfull.client/dist
+hotelfull.client/node_modules
+.vs/HotelFull/FileContentIndex
+.vs/

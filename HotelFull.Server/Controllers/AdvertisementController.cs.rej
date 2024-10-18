@@ -1,0 +1,9 @@
+diff a/HotelFull.Server/Controllers/AdvertisementController.cs b/HotelFull.Server/Controllers/AdvertisementController.cs	(rejected hunks)
+@@ -51,7 +51,6 @@
+ 
+         //取得所有Advertisement image order by priority asc for 輪播系統
+         [HttpGet("AdvertisementForBanner")]
+-        public IActionResult AdvertisementGorBanner()
+         public IActionResult AdvertisementForBanner()
+         {
+             
